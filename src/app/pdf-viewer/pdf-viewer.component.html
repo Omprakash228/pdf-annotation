@@ -1,0 +1,52 @@
+<div class="pdf-viewer-container">
+    <div class="toolbar">
+      <div class="navigation">
+        <button (click)="prevPage()" [disabled]="pageNum <= 1">Previous</button>
+        <span>Page {{ pageNum }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="pageNum >= totalPages">
+          Next
+        </button>
+      </div>
+  
+      <div class="zoom-controls">
+        <button (click)="zoomOut()">-</button>
+        <span>{{ scale * 100 }}%</span>
+        <button (click)="zoomIn()">+</button>
+      </div>
+  
+      <div class="annotation-controls">
+        <button (click)="toggleSignatureMode()">
+          {{ isSignatureMode ? 'Cancel Signature' : 'Add Signature' }}
+        </button>
+        <button (click)="toggleTextMode()">
+          {{ isTextMode ? 'Cancel Text' : 'Add Text' }}
+        </button>
+        <button (click)="savePDF()">Save PDF</button>
+      </div>
+    </div>
+  
+    <div class="content-area">
+      <div #canvasContainer class="canvas-container"></div>
+  
+      <canvas
+        #signatureCanvas
+        class="signature-pad"
+        width="400"
+        height="200"
+        style="display: none;"
+      ></canvas>
+  
+      <div #textInput class="text-input" style="display: none;">
+        <input [(ngModel)]="textContent" placeholder="Enter text..." />
+        <button (click)="addText()" [disabled]="!textContent">Place Text</button>
+      </div>
+  
+      <div *ngIf="isSignatureMode" class="signature-actions">
+        <button (click)="clearSignature()">Clear</button>
+        <button (click)="saveSignature()" [disabled]="signaturePad?.isEmpty()">
+          Use Signature
+        </button>
+      </div>
+    </div>
+  </div>
+  

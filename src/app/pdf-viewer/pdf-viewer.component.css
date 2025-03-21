@@ -1,0 +1,77 @@
+.pdf-viewer-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .navigation,
+  .zoom-controls,
+  .annotation-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .content-area {
+    flex: 1;
+    position: relative;
+    overflow: auto;
+  }
+  
+  .canvas-container {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    background-color: #e0e0e0;
+  }
+  
+  .pdf-page {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+  }
+  
+  .signature-pad {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000;
+    background-color: #fff;
+    z-index: 100;
+  }
+  
+  .signature-actions {
+    position: absolute;
+    top: calc(50% + 110px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+  }
+  
+  .text-input {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    z-index: 100;
+  }
+  
